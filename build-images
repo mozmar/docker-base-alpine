@@ -1,0 +1,9 @@
+#!/bin/bash -exo pipefail
+
+docker build --pull -t mozmeao/base:python-2.7-alpine -f Dockerfile.py27 .
+docker build --pull -t mozmeao/base:python-3.6-alpine -f Dockerfile.py36 .
+
+if [[ "$1" == "--push" ]]; then
+  docker push mozmeao/base:python-2.7-alpine
+  docker push mozmeao/base:python-3.6-alpine
+fi
